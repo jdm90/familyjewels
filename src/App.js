@@ -1,19 +1,26 @@
-import React, { Component } from "react";
-import { Navbar, NavbarBrand } from "reactstrap";
-import "./App.css";
+import * as React from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import Nav from './components/Nav';
+import Home from './components/HomeComponent';
+import About from './components/AboutComponent';
+import Footer from './components/FooterComponent';
+import './App.css';
+import MainTable from './components/MainTableComponent';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Family Jewels</NavbarBrand>
-          </div>
-        </Navbar>
+function App() {
+  return (
+    <div>
+      <Nav />
+      <div class="main-div">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/test" element={<MainTable />} />
+        </Routes>
       </div>
-    );
-  }
+      <Footer />
+    </div>
+  );
 }
 
 export default App;

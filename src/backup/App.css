@@ -1,5 +1,11 @@
+.nav-container {
+  text-align: center;
+  background-color: black;
+}
+
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
+  background-color: rgb(205, 235, 253);
 }
 
 .table-container {
@@ -45,9 +51,7 @@ form * {
   font-size: 12px;
 }
 
-.site-footer {
-  background-image: linear-gradient(#cec8ff, white);
-  padding: 20px 0;
+.footer {
   text-align: center;
 }
 

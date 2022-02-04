@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "itemName": "Bracelet",
+    "serialNum": "15ZH3826",
+    "purchaseDate": "11/15/21",
+    "warranty": "Yes - lifetime",
+    "value": "$2,000.00",
+    "condition": "Like new",
+    "description": "14k gold",
+    "location": "Bedroom"
+  },
+  {
+    "id": 2,
+    "itemName": "Necklace",
+    "serialNum": "1HZ238B6",
+    "purchaseDate": "10/02/21",
+    "warranty": "No",
+    "value": "$1,000.00",
+    "condition": "Like new",
+    "description": "14k gold",
+    "location": "Bedroom"
+  },
+  {
+    "id": 3,
+    "itemName": "TV",
+    "serialNum": "15ZAA386",
+    "purchaseDate": "07/21/21",
+    "warranty": "No",
+    "value": "$600.00",
+    "condition": "Good",
+    "description": "Samsung 55in smart TV",
+    "location": "Bedroom"
+  },
+  {
+    "id": 4,
+    "itemName": "Laptop",
+    "serialNum": "25ZHG826",
+    "purchaseDate": "11/21/93",
+    "warranty": "No",
+    "value": "$1,500.00",
+    "condition": "Good",
+    "description": "HP laptop",
+    "location": "Bedroom"
+  },
+  {
+    "id": 5,
+    "itemName": "Tablet",
+    "serialNum": "15ZH3GG4",
+    "purchaseDate": "11/27/90",
+    "warranty": "Yes - 2023",
+    "value": "$200.00",
+    "condition": "Like new",
+    "description": "Samsung tablet",
+    "location": "Bedroom"
+  },
+  {
+    "id": 6,
+    "itemName": "Gold",
+    "serialNum": "23ZHG8M6",
+    "purchaseDate": "02/03/04",
+    "warranty": "No",
+    "value": "$5,000.00",
+    "condition": "Old, good",
+    "description": "14k gold",
+    "location": "Safe"
+  }
+]
