@@ -9,7 +9,7 @@ import CollapsibleTable from './components/Inventory';
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Nav />
       <div class="main-div">
         <Routes>

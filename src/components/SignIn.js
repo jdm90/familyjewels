@@ -46,6 +46,10 @@ export default function SignIn() {
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
+        <Box sx={{ textAlign: 'center' }}>
+          <h4>Hello, and welcome to Family Jewels!</h4>
+          <h6>The home inventory and family valuables tracker.</h6>
+        </Box>
         <Box
           sx={{
             marginTop: 8,

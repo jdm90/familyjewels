@@ -11,3 +11,11 @@ body {
 .tableheader {
   background-color: black;
 }
+
+.inventory-body {
+  background-color: red;
+}
+
+.App {
+  background-color: aliceblue;
+}
