@@ -7,10 +7,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
@@ -31,7 +27,7 @@ export default class Example extends React.Component {
   render() {
     return (
       <div>
-        <Navbar className="navbar-dark bg-primary" expand="md">
+        <Navbar className="navbar-dark bg-primary mb-5" expand="md">
           <NavbarBrand href="/">FAMILY JEWELS</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -47,8 +43,8 @@ export default class Example extends React.Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="nav-link" to="/test">
-                  <i className="fa fa-info fa-lg" /> Test
+                <NavLink tag={Link} className="nav-link" to="/inventory">
+                  <i className="fa fa-info fa-lg" /> Inventory
                 </NavLink>
               </NavItem>
             </Nav>

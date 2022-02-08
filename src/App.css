@@ -2,55 +2,12 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.table-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 1%;
-  align-items: center;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th,
-td {
-  border: 1px solid grey;
-  text-align: left;
-  padding: 10px;
-  font-size: 14px;
-}
-
-th {
-  background-color: rgb(117, 201, 250);
-}
-
-td {
-  background-color: white;
-}
-
-form {
-  display: flex;
-  gap: 5px;
-}
-
-form td:last-child {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-form * {
-  font-size: 12px;
-}
-
 .site-footer {
   background-image: linear-gradient(#cec8ff, white);
   padding: 20px 0;
   text-align: center;
 }
 
-button {
-  margin: 3px;
+.tableheader {
+  background-color: black;
 }
