@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export const EditableRow = ({
   editFormData,
@@ -11,9 +11,9 @@ export const EditableRow = ({
         <input
           type="text"
           required="required"
-          placeholder="Item name"
-          name="itemName"
-          value={editFormData.itemName}
+          placeholder="Enter an ID..."
+          name="itemID"
+          value={editFormData.itemID}
           onChange={handleEditFormChange}
         ></input>
       </td>
@@ -21,9 +21,9 @@ export const EditableRow = ({
         <input
           type="text"
           required="required"
-          placeholder="Serial/product number"
-          name="serialNum"
-          value={editFormData.serialNum}
+          placeholder="Enter an item name..."
+          name="name"
+          value={editFormData.name}
           onChange={handleEditFormChange}
         ></input>
       </td>
@@ -31,9 +31,9 @@ export const EditableRow = ({
         <input
           type="text"
           required="required"
-          placeholder="Purchase date"
-          name="purchaseDate"
-          value={editFormData.purchaseDate}
+          placeholder="Enter a category..."
+          name="category"
+          value={editFormData.category}
           onChange={handleEditFormChange}
         ></input>
       </td>
@@ -41,49 +41,9 @@ export const EditableRow = ({
         <input
           type="text"
           required="required"
-          placeholder="Warranty info"
-          name="warranty"
-          value={editFormData.warranty}
-          onChange={handleEditFormChange}
-        ></input>
-      </td>
-      <td>
-        <input
-          type="text"
-          required="required"
-          placeholder="Estimated value"
-          name="value"
-          value={editFormData.value}
-          onChange={handleEditFormChange}
-        ></input>
-      </td>
-      <td>
-        <input
-          type="text"
-          required="required"
-          placeholder="Item condition"
-          name="condition"
-          value={editFormData.condition}
-          onChange={handleEditFormChange}
-        ></input>
-      </td>
-      <td>
-        <input
-          type="text"
-          required="required"
-          placeholder="Item description"
-          name="description"
-          value={editFormData.description}
-          onChange={handleEditFormChange}
-        ></input>
-      </td>
-      <td>
-        <input
-          type="text"
-          required="required"
-          placeholder="Item location"
-          name="location"
-          value={editFormData.location}
+          placeholder="Enter an acquisition date..."
+          name="dateAcquired"
+          value={editFormData.dateAcquired}
           onChange={handleEditFormChange}
         ></input>
       </td>
