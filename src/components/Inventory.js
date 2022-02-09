@@ -15,7 +15,7 @@ import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { NotesModal } from './NotesModal';
+import NotesModal from './NotesModal';
 import Fab from '@mui/material/Fab';
 import Tooltip from '@mui/material/Tooltip';
 import Paper from '@mui/material/Paper';
