@@ -1,4 +1,40 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import NotesModal from './NotesModal';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Stack from '@mui/material/Stack';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import PhotoModal from './PhotoModal';
+
+Row.propTypes = {
+  row: PropTypes.shape({
+    category: PropTypes.string.isRequired,
+    dateAcquired: PropTypes.string.isRequired,
+    history: PropTypes.arrayOf(
+      PropTypes.shape({
+        amount: PropTypes.number.isRequired,
+        customerId: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+    name: PropTypes.string.isRequired,
+    itemID: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default function Row(props) {
   const { row } = props;
