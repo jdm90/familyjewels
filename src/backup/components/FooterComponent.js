@@ -1,16 +1,17 @@
-import React from "react";
+import React from 'react';
 
-export default function FooterComponent() {
+function Footer(props) {
   return (
-    <div>
-      <footer class="bg-light text-center">
-        <div>
-          © 2022 Copyright //{" "}
-          <a class="text-dark" href="https://justinmiles.io/">
-            n1ftyn0m4d
-          </a>
+    <footer className="site-footer mt-5">
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <p>Created by Justin Miles // 2022</p>
+          </div>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 }
+
+export default Footer;

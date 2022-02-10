@@ -70,5 +70,53 @@
     "description": "14k gold",
     "location": "Safe",
     "category": "Jewelry"
+  },
+  {
+    "itemID": 7,
+    "name": "Gold",
+    "serialNum": "23ZHG8M6",
+    "dateAcquired": "02/03/04",
+    "warranty": "No",
+    "value": "$5,000.00",
+    "condition": "Old, good",
+    "description": "14k gold",
+    "location": "Safe",
+    "category": "Jewelry"
+  },
+  {
+    "itemID": 8,
+    "name": "Gold",
+    "serialNum": "23ZHG8M6",
+    "dateAcquired": "02/03/04",
+    "warranty": "No",
+    "value": "$5,000.00",
+    "condition": "Old, good",
+    "description": "14k gold",
+    "location": "Safe",
+    "category": "Jewelry"
+  },
+  {
+    "itemID": 9,
+    "name": "Gold",
+    "serialNum": "23ZHG8M6",
+    "dateAcquired": "02/03/04",
+    "warranty": "No",
+    "value": "$5,000.00",
+    "condition": "Old, good",
+    "description": "14k gold",
+    "location": "Safe",
+    "category": "Jewelry"
+  },
+  {
+    "itemID": 10,
+    "name": "Gold",
+    "serialNum": "23ZHG8M6",
+    "dateAcquired": "02/03/04",
+    "warranty": "No",
+    "value": "$5,000.00",
+    "condition": "Old, good",
+    "description": "14k gold",
+    "location": "Safe",
+    "category": "Jewelry"
   }
 ]

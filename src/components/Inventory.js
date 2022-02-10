@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Fragment, useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -6,82 +6,143 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Stack from '@mui/material/Stack';
-import AddIcon from '@mui/icons-material/Add';
-import Fab from '@mui/material/Fab';
 import Tooltip from '@mui/material/Tooltip';
 import Paper from '@mui/material/Paper';
 import '../App.css';
-import Row from './ReadOnly';
-
-function createData(itemID, name, category, dateAcquired, description, price) {
-  return {
-    itemID,
-    name,
-    category,
-    dateAcquired,
-    price,
-    description,
-    history: [
-      {
-        date: '2020-01-05',
-        customerId: '11091700',
-        amount: 3,
-      },
-      {
-        date: '2020-01-02',
-        customerId: 'Anonymous',
-        amount: 1,
-      },
-    ],
-  };
-}
-
-const rows = [
-  createData(1, 'Necklace', 'Jewelry', '1/1/21', 'Description of necklace.'),
-  createData(2, 'Bracelet', 'Jewelry', '1/1/21', 'Description of bracelet.'),
-  createData(3, 'TV', 'Electronics', '1/1/21', 'Description of TV.'),
-  createData(4, 'iPad', 'Electronics', '1/1/21', 'Description of iPad.'),
-  createData(5, 'Xbox', 'Electronics', '1/1/21', 'Description of Xbox.'),
-  createData(6, 'Xbox', 'Electronics', '1/1/21', 'Description of Xbox.'),
-  createData(7, 'Xbox', 'Electronics', '1/1/21', 'Description of Xbox.'),
-  createData(8, 'Xbox', 'Electronics', '1/1/21', 'Description of Xbox.'),
-  createData(9, 'Xbox', 'Electronics', '1/1/21', 'Description of Xbox.'),
-  createData(10, 'Xbox', 'Electronics', '1/1/21', 'Description of Xbox.'),
-  createData(11, 'Xbox', 'Electronics', '1/1/21', 'Description of Xbox.'),
-  createData(12, 'Xbox', 'Electronics', '1/1/21', 'Description of Xbox.'),
-  createData(13, 'Xbox', 'Electronics', '1/1/21', 'Description of Xbox.'),
-  createData(14, 'Xbox', 'Electronics', '1/1/21', 'Description of Xbox.'),
-  createData(15, 'Xbox', 'Electronics', '1/1/21', 'Description of Xbox.'),
-];
+import { ReadOnlyRow } from './ReadOnly';
+import { EditableRow } from './Editable';
+import data from './mock-data.json';
+import { customAlphabet } from 'nanoid';
+import AddItemModal from './AddItemModal';
+const nanoid = customAlphabet('1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ', 5);
 
 export default function CollapsibleTable() {
+  const [items, setItems] = useState(data);
+  const [addFormData, setAddFormData] = useState({
+    itemID: '',
+    name: '',
+    category: '',
+    dateAcquired: '',
+  });
+
+  const [editFormData, setEditFormData] = useState({
+    itemID: '',
+    name: '',
+    category: '',
+    dateAcquired: '',
+  });
+
+  const [editItemId, setEditItemId] = useState(null);
+
+  const handleEditFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute('name');
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...editFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setEditFormData(newFormData);
+  };
+
+  const handleEditFormSubmit = (event) => {
+    event.preventDefault();
+
+    const editedItem = {
+      itemID: editItemId,
+      name: editFormData.name,
+      category: editFormData.category,
+      dateAcquired: editFormData.dateAcquired,
+      serialNum: addFormData.serialNum,
+      value: addFormData.value,
+      condition: addFormData.condition,
+      location: addFormData.location,
+    };
+
+    const newItems = [...items];
+
+    const index = items.findIndex((item) => item.itemID === editItemId);
+
+    newItems[index] = editedItem;
+
+    setItems(newItems);
+    setEditItemId(null);
+  };
+
+  const handleEditClick = (event, item) => {
+    event.preventDefault();
+    setEditItemId(item.itemID);
+
+    const formValues = {
+      itemID: item.itemID,
+      name: item.name,
+      category: item.category,
+      dateAcquired: item.dateAcquired,
+      serialNum: addFormData.serialNum,
+      value: addFormData.value,
+      condition: addFormData.condition,
+      location: addFormData.location,
+    };
+
+    setEditFormData(formValues);
+  };
+
+  const handleCancelClick = () => {
+    setEditItemId(null);
+  };
+
+  const handleDeleteClick = (itemId) => {
+    const newItems = [...items];
+
+    const index = items.findIndex((item) => item.itemID === itemId);
+
+    newItems.splice(index, 1);
+
+    setItems(newItems);
+  };
+
   return (
     <>
       <div className="container">
         <h3>Your Inventory</h3>
         <TableContainer component={Paper} style={{ height: '500px' }}>
-          <Table stickyHeader aria-label="collapsible table">
-            <TableHead className="tableheader">
-              <TableRow>
-                <TableCell />
-                <TableCell>ID</TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell>Category</TableCell>
-                <TableCell>Date Acquired</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <Row key={row.name} row={row} />
-              ))}
-            </TableBody>
-          </Table>
+          <form onSubmit={handleEditFormSubmit}>
+            <Table stickyHeader aria-label="collapsible table">
+              <TableHead className="tableheader">
+                <TableRow>
+                  <TableCell />
+                  <TableCell>ID</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Category</TableCell>
+                  <TableCell>Date Acquired</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {items.map((item) => (
+                  <Fragment>
+                    {editItemId === item.itemID ? (
+                      <EditableRow
+                        editFormData={editFormData}
+                        handleEditFormChange={handleEditFormChange}
+                        handleCancelClick={handleCancelClick}
+                      />
+                    ) : (
+                      <ReadOnlyRow
+                        item={item}
+                        handleEditClick={handleEditClick}
+                        handleDeleteClick={handleDeleteClick}
+                      />
+                    )}
+                  </Fragment>
+                ))}
+              </TableBody>
+            </Table>
+          </form>
         </TableContainer>
         <Stack className="m-3" spacing={2} direction="row">
           <Tooltip title="Add an item" arrow>
-            <Fab size="medium" color="primary" aria-label="add">
-              <AddIcon />
-            </Fab>
+            <AddItemModal />
           </Tooltip>
         </Stack>
       </div>

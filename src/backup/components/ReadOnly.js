@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
@@ -17,7 +18,26 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import PhotoModal from './PhotoModal';
 
-export const ReadOnlyRow = ({ item, handleEditClick, handleDeleteClick }) => {
+Row.propTypes = {
+  row: PropTypes.shape({
+    category: PropTypes.string.isRequired,
+    dateAcquired: PropTypes.string.isRequired,
+    history: PropTypes.arrayOf(
+      PropTypes.shape({
+        amount: PropTypes.number.isRequired,
+        customerId: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+    name: PropTypes.string.isRequired,
+    itemID: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default function Row(props) {
+  const { row } = props;
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -32,12 +52,12 @@ export const ReadOnlyRow = ({ item, handleEditClick, handleDeleteClick }) => {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell>{item.itemID}</TableCell>
+        <TableCell>{row.itemID}</TableCell>
         <TableCell component="th" scope="row">
-          {item.name}
+          {row.name}
         </TableCell>
-        <TableCell>{item.category}</TableCell>
-        <TableCell>{item.dateAcquired}</TableCell>
+        <TableCell>{row.category}</TableCell>
+        <TableCell>{row.dateAcquired}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -49,7 +69,6 @@ export const ReadOnlyRow = ({ item, handleEditClick, handleDeleteClick }) => {
                   variant="contained"
                   color="success"
                   startIcon={<EditIcon />}
-                  onClick={(event) => handleEditClick(event, item)}
                 >
                   Edit
                 </Button>
@@ -58,7 +77,6 @@ export const ReadOnlyRow = ({ item, handleEditClick, handleDeleteClick }) => {
                   variant="contained"
                   color="error"
                   startIcon={<DeleteIcon />}
-                  onClick={() => handleDeleteClick(item.itemID)}
                 >
                   Delete
                 </Button>
@@ -66,10 +84,10 @@ export const ReadOnlyRow = ({ item, handleEditClick, handleDeleteClick }) => {
                 <NotesModal />
               </Stack>
               <Typography variant="h6" gutterBottom component="div">
-                {item.name}
+                {row.name}
               </Typography>
               <Typography variant="h7" gutterBottom component="div">
-                {item.description}
+                {row.description}
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
@@ -81,12 +99,18 @@ export const ReadOnlyRow = ({ item, handleEditClick, handleDeleteClick }) => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  <TableRow>
-                    <TableCell>{item.serialNum}</TableCell>
-                    <TableCell>{item.value}</TableCell>
-                    <TableCell>{item.condition}</TableCell>
-                    <TableCell>{item.location}</TableCell>
-                  </TableRow>
+                  {row.history.map((historyRow) => (
+                    <TableRow key={historyRow.date}>
+                      <TableCell component="th" scope="row">
+                        {historyRow.date}
+                      </TableCell>
+                      <TableCell>{historyRow.customerId}</TableCell>
+                      <TableCell>{historyRow.amount}</TableCell>
+                      <TableCell>
+                        {Math.round(historyRow.amount * row.price * 100) / 100}
+                      </TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </Box>
@@ -95,4 +119,4 @@ export const ReadOnlyRow = ({ item, handleEditClick, handleDeleteClick }) => {
       </TableRow>
     </React.Fragment>
   );
-};
+}

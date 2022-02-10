@@ -6,7 +6,6 @@ import Footer from './components/FooterComponent';
 import './App.css';
 import SignIn from './components/SignIn';
 import CollapsibleTable from './components/Inventory';
-import Test from './components/Test';
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
           <Route path="/" element={<SignIn />} />
           <Route path="/about" element={<About />} />
           <Route path="/inventory" element={<CollapsibleTable />} />
-          <Route path="/test" element={<Test />} />
         </Routes>
       </div>
       <Footer />

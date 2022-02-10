@@ -47,6 +47,11 @@ export default class Example extends React.Component {
                   <i className="fa fa-info fa-lg" /> Inventory
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink tag={Link} className="nav-link" to="/test">
+                  <i className="fa fa-info fa-lg" /> Test
+                </NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>

@@ -1,4 +1,6 @@
 import React from 'react';
+import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
 
 export const EditableRow = ({
   editFormData,
@@ -6,8 +8,8 @@ export const EditableRow = ({
   handleCancelClick,
 }) => {
   return (
-    <tr>
-      <td>
+    <TableRow>
+      <TableCell>
         <input
           type="text"
           required="required"
@@ -16,8 +18,8 @@ export const EditableRow = ({
           value={editFormData.itemID}
           onChange={handleEditFormChange}
         ></input>
-      </td>
-      <td>
+      </TableCell>
+      <TableCell>
         <input
           type="text"
           required="required"
@@ -26,8 +28,8 @@ export const EditableRow = ({
           value={editFormData.name}
           onChange={handleEditFormChange}
         ></input>
-      </td>
-      <td>
+      </TableCell>
+      <TableCell>
         <input
           type="text"
           required="required"
@@ -36,8 +38,8 @@ export const EditableRow = ({
           value={editFormData.category}
           onChange={handleEditFormChange}
         ></input>
-      </td>
-      <td>
+      </TableCell>
+      <TableCell>
         <input
           type="text"
           required="required"
@@ -46,13 +48,13 @@ export const EditableRow = ({
           value={editFormData.dateAcquired}
           onChange={handleEditFormChange}
         ></input>
-      </td>
-      <td>
+      </TableCell>
+      <TableCell>
         <button type="submit">Save</button>
         <button type="button" onClick={handleCancelClick}>
           Cancel
         </button>
-      </td>
-    </tr>
+      </TableCell>
+    </TableRow>
   );
 };
